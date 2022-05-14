@@ -50,3 +50,4 @@ tmp/
 local.properties
 .loadpath
 .factorypath
+!/.gitignore
