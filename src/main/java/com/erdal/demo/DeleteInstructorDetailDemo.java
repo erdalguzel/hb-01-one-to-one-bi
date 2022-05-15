@@ -18,10 +18,14 @@ public class DeleteInstructorDetailDemo {
         try (factory; Session session = factory.getCurrentSession()) {
             session.beginTransaction();
 
-            int id = 1;
+            int id = 4;
             InstructorDetail instructorDetail = session.get(InstructorDetail.class, id);
             System.out.println("instructorDetail: " + instructorDetail);
             System.out.println("instructor: " + instructorDetail.getInstructor());
+
+            // remove the corresponding object reference
+            // break the bi-directional link
+            instructorDetail.getInstructor().setInstructorDetail(null);
 
             // This will remove corresponding record from both tables because of CascadeType.ALL
             session.remove(instructorDetail);
